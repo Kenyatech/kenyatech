@@ -1,0 +1,970 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sendem PH58 20,000mAh Power Bank — KenyaTech</title>
+
+  <!-- SEO Meta Tags — edit these for Facebook/Google sharing -->
+  <meta name="description" content="Sendem PH58 20,000mAh Dual-Line Power Bank with PD20W + 100W Super Fast Charge. Built-in cables, LED display. Only KES 3,999. Delivery anywhere in Kenya.">
+  <meta property="og:title" content="Sendem PH58 20,000mAh Power Bank — KenyaTech">
+  <meta property="og:description" content="PD20W + 100W fast charge, dual built-in cables, LED display. KES 3,999. Free delivery in Nairobi.">
+  <meta property="og:image" content="images/4_jpg.png">
+  <meta property="og:url" content="https://kenyatech.co.ke/powerbank.html">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=DM+Sans:wght@300;400;500;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* ── PAGE-SPECIFIC STYLES ───────────────────────────── */
+
+    .pb-page {
+      min-height: 100vh;
+      background: var(--black);
+      padding-top: 72px; /* nav height */
+    }
+
+    /* ── BREADCRUMB ─────────────────────────────────────── */
+    .breadcrumb {
+      padding: 1.2rem 5%;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--text-muted);
+      letter-spacing: 0.1em;
+      border-bottom: 1px solid var(--border);
+    }
+    .breadcrumb a { color: var(--gold); text-decoration: none; }
+    .breadcrumb a:hover { text-decoration: underline; }
+    .breadcrumb span { margin: 0 0.5rem; }
+
+    /* ── MAIN PRODUCT SECTION ───────────────────────────── */
+    .pb-main {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 3rem 5%;
+    }
+
+    /* Left: image gallery */
+    .pb-gallery { position: sticky; top: 90px; align-self: start; }
+
+    .pb-main-img {
+      background: var(--dark3);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      aspect-ratio: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      position: relative;
+    }
+    .pb-main-img img {
+      width: 85%;
+      height: 85%;
+      object-fit: contain;
+    }
+
+    /* Sale badge on image */
+    .pb-img-badge {
+      position: absolute;
+      top: 1.2rem;
+      left: 1.2rem;
+      background: var(--gold);
+      color: var(--black);
+      font-family: 'Space Mono', monospace;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 0.35rem 0.8rem;
+      border-radius: 4px;
+      letter-spacing: 0.05em;
+    }
+
+    /* Thumbnail strip */
+    .pb-thumbs {
+      display: flex;
+      gap: 0.75rem;
+      margin-top: 1rem;
+    }
+    .pb-thumb {
+      width: 72px;
+      height: 72px;
+      background: var(--dark3);
+      border: 2px solid var(--border);
+      border-radius: var(--r);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: border-color 0.2s;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .pb-thumb img { width: 80%; height: 80%; object-fit: contain; }
+    .pb-thumb.active { border-color: var(--gold); }
+    .pb-thumb:hover { border-color: var(--gold-dim); }
+
+    /* Right: product info */
+    .pb-info { padding: 0 0 0 3rem; }
+
+    .pb-brand {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--gold);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .pb-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+      font-weight: 500;
+      color: var(--white);
+      line-height: 1.15;
+      margin-bottom: 1rem;
+    }
+
+    /* Star rating row */
+    .pb-rating {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+    .pb-stars { color: var(--gold); font-size: 1rem; letter-spacing: 0.1em; }
+    .pb-rating-count { font-size: 0.8rem; color: var(--text-dim); }
+
+    /* Price block */
+    .pb-price-block {
+      background: var(--dark2);
+      border: 1px solid var(--border-gold);
+      border-radius: var(--r-lg);
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .pb-price-row {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      margin-bottom: 0.5rem;
+    }
+    .pb-price-main {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.8rem;
+      font-weight: 600;
+      color: var(--gold);
+      line-height: 1;
+    }
+    .pb-price-original {
+      font-size: 1.1rem;
+      color: var(--text-muted);
+      text-decoration: line-through;
+    }
+    .pb-price-save {
+      font-size: 0.8rem;
+      color: var(--green);
+      font-weight: 600;
+    }
+    .pb-delivery-note {
+      font-size: 0.82rem;
+      color: var(--text-dim);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .pb-delivery-note span { color: var(--green); font-weight: 600; }
+
+    /* Quantity selector */
+    .pb-qty-row {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    .pb-qty-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--text-dim);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+    .pb-qty-controls {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      overflow: hidden;
+    }
+    .pb-qty-btn {
+      width: 40px;
+      height: 40px;
+      background: var(--dark3);
+      border: none;
+      color: var(--text);
+      font-size: 1.2rem;
+      cursor: pointer;
+      transition: background 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .pb-qty-btn:hover { background: var(--border); }
+    .pb-qty-num {
+      width: 52px;
+      height: 40px;
+      background: var(--dark2);
+      border: none;
+      color: var(--white);
+      font-family: 'Space Mono', monospace;
+      font-size: 1rem;
+      text-align: center;
+    }
+
+    /* CTA buttons */
+    .pb-ctas {
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+    .pb-btn-order {
+      width: 100%;
+      padding: 1.1rem;
+      background: var(--gold);
+      color: var(--black);
+      border: none;
+      border-radius: var(--r);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 1.05rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+      letter-spacing: 0.04em;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+    }
+    .pb-btn-order:hover {
+      background: var(--gold-light);
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(212,168,83,0.35);
+    }
+    .pb-btn-whatsapp {
+      width: 100%;
+      padding: 1rem;
+      background: transparent;
+      color: var(--green);
+      border: 1px solid var(--green);
+      border-radius: var(--r);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.6rem;
+    }
+    .pb-btn-whatsapp:hover {
+      background: rgba(34,197,94,0.1);
+      transform: translateY(-2px);
+    }
+
+    /* Trust strip */
+    .pb-trust {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+    .pb-trust-item {
+      background: var(--dark3);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: 0.75rem;
+      text-align: center;
+    }
+    .pb-trust-icon { font-size: 1.3rem; margin-bottom: 0.3rem; }
+    .pb-trust-text { font-size: 0.72rem; color: var(--text-dim); line-height: 1.3; }
+
+    /* ── SPECS SECTION ──────────────────────────────────── */
+    .pb-specs-section {
+      background: var(--dark2);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 4rem 5%;
+    }
+    .pb-specs-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+    }
+
+    .pb-spec-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem;
+      font-weight: 500;
+      color: var(--white);
+      margin-bottom: 1.5rem;
+    }
+    .pb-spec-title em { color: var(--gold); font-style: italic; }
+
+    .pb-spec-table { width: 100%; border-collapse: collapse; }
+    .pb-spec-table tr { border-bottom: 1px solid var(--border); }
+    .pb-spec-table tr:last-child { border-bottom: none; }
+    .pb-spec-table td { padding: 0.8rem 0; font-size: 0.88rem; }
+    .pb-spec-table td:first-child {
+      color: var(--text-dim);
+      width: 40%;
+      font-family: 'Space Mono', monospace;
+      font-size: 0.72rem;
+      letter-spacing: 0.05em;
+    }
+    .pb-spec-table td:last-child { color: var(--text); font-weight: 500; }
+
+    /* Feature cards */
+    .pb-features { display: flex; flex-direction: column; gap: 1rem; }
+    .pb-feature-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: 1.2rem 1.5rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      transition: border-color 0.2s;
+    }
+    .pb-feature-card:hover { border-color: var(--border-gold); }
+    .pb-feature-icon { font-size: 1.8rem; flex-shrink: 0; }
+    .pb-feature-name {
+      font-size: 0.9rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 0.25rem;
+    }
+    .pb-feature-desc { font-size: 0.8rem; color: var(--text-dim); line-height: 1.5; }
+
+    /* ── WHAT'S IN THE BOX ──────────────────────────────── */
+    .pb-inbox-section {
+      padding: 4rem 5%;
+      background: var(--black);
+    }
+    .pb-inbox-inner { max-width: 1200px; margin: 0 auto; }
+    .pb-inbox-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+    .pb-inbox-item {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--r-lg);
+      padding: 1.5rem;
+      text-align: center;
+    }
+    .pb-inbox-emoji { font-size: 2.5rem; margin-bottom: 0.75rem; }
+    .pb-inbox-name { font-size: 0.85rem; color: var(--text); font-weight: 500; }
+
+    /* ── CHECKOUT FORM SECTION ──────────────────────────── */
+    .pb-order-section {
+      background: var(--dark2);
+      border-top: 1px solid var(--border-gold);
+      padding: 4rem 5%;
+    }
+    .pb-order-inner {
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    .pb-order-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem;
+    }
+    .pb-order-grid .full { grid-column: 1 / -1; }
+
+    /* ── RESPONSIVE — TABLET ───────────────────────────── */
+    @media (max-width: 900px) {
+      .pb-main        { grid-template-columns: 1fr; padding: 2rem 4%; gap: 0; }
+      .pb-gallery     { position: static; }
+      .pb-info        { padding: 2rem 0 0 0; }
+      .pb-specs-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .pb-specs-section { padding: 3rem 4%; }
+      .pb-inbox-section { padding: 3rem 4%; }
+      .pb-inbox-grid  { grid-template-columns: repeat(2, 1fr); }
+      .pb-order-grid  { grid-template-columns: 1fr; }
+      .pb-order-grid .full { grid-column: 1; }
+      .pb-order-section { padding: 3rem 4%; }
+    }
+
+    /* ── RESPONSIVE — MOBILE ────────────────────────────── */
+    @media (max-width: 600px) {
+      /* Gallery */
+      .pb-main-img  { aspect-ratio: 1; }
+      .pb-thumb     { width: 56px; height: 56px; }
+
+      /* Info */
+      .pb-title     { font-size: 2rem; }
+      .pb-brand     { font-size: 0.6rem; }
+
+      /* Price block */
+      .pb-price-block  { padding: 1rem; }
+      .pb-price-main   { font-size: 2.2rem; }
+      .pb-price-original { font-size: 0.95rem; }
+
+      /* Quantity */
+      .pb-qty-row   { gap: 0.75rem; }
+      .pb-qty-btn   { width: 36px; height: 36px; }
+      .pb-qty-num   { width: 44px; height: 36px; font-size: 0.9rem; }
+
+      /* CTA buttons — full width stack */
+      .pb-ctas { gap: 0.6rem; }
+      .pb-btn-order,
+      .pb-btn-whatsapp { width: 100%; font-size: 0.95rem; padding: 1rem; }
+
+      /* Trust strip: 2 columns */
+      .pb-trust     { grid-template-columns: 1fr 1fr; gap: 0.5rem; }
+      .pb-trust-item { padding: 0.6rem 0.5rem; }
+      .pb-trust-icon { font-size: 1.1rem; }
+      .pb-trust-text { font-size: 0.68rem; }
+
+      /* Specs */
+      .pb-spec-title    { font-size: 1.5rem; }
+      .pb-spec-table td { font-size: 0.82rem; padding: 0.65rem 0; }
+
+      /* Feature cards */
+      .pb-feature-card { padding: 1rem; }
+      .pb-feature-icon { font-size: 1.5rem; }
+      .pb-feature-name { font-size: 0.85rem; }
+      .pb-feature-desc { font-size: 0.75rem; }
+
+      /* In the box */
+      .pb-inbox-grid { grid-template-columns: repeat(2, 1fr); gap: 0.75rem; }
+      .pb-inbox-item { padding: 1rem; }
+      .pb-inbox-emoji { font-size: 2rem; }
+      .pb-inbox-name  { font-size: 0.78rem; }
+
+      /* Order form */
+      .pb-order-grid  { grid-template-columns: 1fr; gap: 0.75rem; }
+      .pb-order-inner { padding: 0; }
+
+      /* Order summary pill */
+      .pb-order-section [style*='justify-content:space-between'] {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      /* Breadcrumb */
+      .breadcrumb { font-size: 0.58rem; padding: 0.9rem 4%; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Custom cursor (shared with main site) -->
+  <div class="cursor"      id="cursor"></div>
+  <div class="cursor-ring" id="cursorRing"></div>
+
+  <!-- Toast -->
+  <div class="toast" id="toast">
+    <span class="toast-icon">✓</span>
+    <span class="toast-text" id="toastText">Done!</span>
+  </div>
+
+  <!-- ── NAVIGATION (same as main site) ─────────────────── -->
+  <nav id="navbar">
+    <a href="index.html" class="nav-logo">Kenya<span>Tech</span></a>
+    <ul class="nav-links">
+      <li><a href="index.html#products">Shop</a></li>
+      <li><a href="index.html#categories">Categories</a></li>
+      <li><a href="index.html#bestsellers">Best Sellers</a></li>
+      <li><a href="index.html#about">About</a></li>
+    </ul>
+    <div class="nav-actions">
+      <a href="tel:+254140700113" class="support-btn support-btn-call" style="font-size:0.78rem;padding:0.5rem 1rem;">📞 Call Us</a>
+      <button class="menu-btn" id="menuBtn" onclick="document.getElementById('mobileMenu').classList.toggle('open')">☰</button>
+    </div>
+  </nav>
+
+  <!-- Mobile menu for powerbank page -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="index.html">← Back to Shop</a>
+    <a href="index.html#products">All Products</a>
+    <a href="index.html#categories">Categories</a>
+    <a href="tel:+254140700113">📞 +254 140 700 113</a>
+    <a href="https://wa.me/254140700113" target="_blank">💬 WhatsApp Us</a>
+  </div>
+
+
+  <!-- ── BREADCRUMB ─────────────────────────────────────── -->
+  <div class="pb-page">
+    <div class="breadcrumb">
+      <a href="index.html">Home</a>
+      <span>→</span>
+      <a href="index.html#products">Phone Accessories</a>
+      <span>→</span>
+      Sendem PH58 Power Bank
+    </div>
+
+
+    <!-- ── MAIN PRODUCT HERO ──────────────────────────────── -->
+    <div class="pb-main">
+
+      <!-- Left: Image -->
+      <div class="pb-gallery">
+        <div class="pb-main-img" id="mainImg">
+          <div class="pb-img-badge">SALE — Save KES 2,001</div>
+          <img src="images/4_jpg.jpg" alt="Sendem PH58 20000mAh Power Bank" id="heroImg"
+            onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+          <span style="font-size:8rem;display:none">🔋</span>
+        </div>
+        <!-- Thumbnail strip — add more images as you get them -->
+        <div class="pb-thumbs">
+          <div class="pb-thumb active" onclick="switchImg('images/4_jpg.png', this)">
+            <img src="images/4_jpg.jpg" alt="Front view"
+              onerror="this.style.display='none';this.parentElement.innerHTML='🔋'">
+          </div>
+          <!-- Add more thumbnails below when you have more product photos:
+          <div class="pb-thumb" onclick="switchImg('images/4b.jpg', this)">
+            <img src="images/4b.jpg" alt="Side view">
+          </div>
+          -->
+        </div>
+      </div>
+
+      <!-- Right: Info -->
+      <div class="pb-info">
+        <div class="pb-brand">// Sendem · Model PH58</div>
+        <h1 class="pb-title">
+          20,000mAh<br>
+          <em>Dual-Line Power Bank</em>
+        </h1>
+
+        <!-- Rating -->
+        <div class="pb-rating">
+          <span class="pb-stars">★★★★★</span>
+          <span class="pb-rating-count">4.7 · 120+ sold in Kenya</span>
+        </div>
+
+        <!-- Price -->
+        <div class="pb-price-block">
+          <div class="pb-price-row">
+            <span class="pb-price-main">KES 3,999</span>
+            <span class="pb-price-original">KES 6,000</span>
+          </div>
+          <div class="pb-price-save">✓ You save KES 2,001 (33% off)</div>
+          <div style="height:0.75rem"></div>
+          <div class="pb-delivery-note">
+            🚚 <span>Free delivery</span> on orders above KES 10,000 · Ships within 24hrs
+          </div>
+        </div>
+
+        <!-- Quantity -->
+        <div class="pb-qty-row">
+          <span class="pb-qty-label">Qty:</span>
+          <div class="pb-qty-controls">
+            <button class="pb-qty-btn" onclick="changeQty(-1)">−</button>
+            <input class="pb-qty-num" id="pbQty" value="1" min="1" max="20" type="number" readonly>
+            <button class="pb-qty-btn" onclick="changeQty(1)">+</button>
+          </div>
+        </div>
+
+        <!-- CTA Buttons -->
+        <div class="pb-ctas">
+          <button class="pb-btn-order" onclick="scrollToOrder()">
+            🚚 Order Now — Pay on Delivery
+          </button>
+          <a class="pb-btn-whatsapp" href="https://wa.me/254140700113?text=Hi!%20I%20want%20to%20order%20the%20Sendem%20PH58%2020%2C000mAh%20Power%20Bank%20at%20KES%203%2C999.%20Please%20advise%20on%20delivery." target="_blank">
+            💬 Order via WhatsApp
+          </a>
+        </div>
+
+        <!-- Trust strip -->
+        <div class="pb-trust">
+          <div class="pb-trust-item">
+            <div class="pb-trust-icon">🛡️</div>
+            <div class="pb-trust-text">100% Genuine Product</div>
+          </div>
+          <div class="pb-trust-item">
+            <div class="pb-trust-icon">↩️</div>
+            <div class="pb-trust-text">7-Day Returns</div>
+          </div>
+          <div class="pb-trust-item">
+            <div class="pb-trust-icon">📞</div>
+            <div class="pb-trust-text">Call Support Available</div>
+          </div>
+        </div>
+
+        <!-- Short highlights -->
+        <div style="border-top:1px solid var(--border);padding-top:1.2rem;">
+          <div style="font-family:'Space Mono',monospace;font-size:0.62rem;color:var(--gold);letter-spacing:0.15em;text-transform:uppercase;margin-bottom:0.75rem;">// Key Highlights</div>
+          <ul style="list-style:none;display:flex;flex-direction:column;gap:0.5rem;">
+            <li style="font-size:0.85rem;color:var(--text-dim);display:flex;gap:0.6rem;"><span style="color:var(--gold)">✦</span> PD 20W fast charge + 100W super fast output</li>
+            <li style="font-size:0.85rem;color:var(--text-dim);display:flex;gap:0.6rem;"><span style="color:var(--gold)">✦</span> Built-in dual cables — no need to carry extra</li>
+            <li style="font-size:0.85rem;color:var(--text-dim);display:flex;gap:0.6rem;"><span style="color:var(--gold)">✦</span> LED digital display shows exact battery %</li>
+            <li style="font-size:0.85rem;color:var(--text-dim);display:flex;gap:0.6rem;"><span style="color:var(--gold)">✦</span> Charges 4–6 phones fully on one charge</li>
+            <li style="font-size:0.85rem;color:var(--text-dim);display:flex;gap:0.6rem;"><span style="color:var(--gold)">✦</span> Compact design — fits in any pocket or bag</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ── SPECS + FEATURES ───────────────────────────────── -->
+    <div class="pb-specs-section">
+      <div class="pb-specs-inner">
+
+        <!-- Specs table -->
+        <div>
+          <div class="pb-spec-title">Technical <em>Specs</em></div>
+          <table class="pb-spec-table">
+            <tr><td>Model</td><td>Sendem PH58</td></tr>
+            <tr><td>Capacity</td><td>20,000 mAh</td></tr>
+            <tr><td>Input</td><td>PD 20W (USB-C)</td></tr>
+            <tr><td>Output</td><td>100W Super Fast Charge</td></tr>
+            <tr><td>Built-in Cables</td><td>USB-C + Lightning (dual)</td></tr>
+            <tr><td>Display</td><td>LED Digital Battery %</td></tr>
+            <tr><td>Ports</td><td>USB-C In/Out · USB-A Out</td></tr>
+            <tr><td>Design</td><td>Self-scraped, compact</td></tr>
+            <tr><td>Certification</td><td>CCC Certified</td></tr>
+            <tr><td>Colour</td><td>Cream / Beige</td></tr>
+            <tr><td>Warranty</td><td>7-day return guarantee</td></tr>
+          </table>
+        </div>
+
+        <!-- Feature cards -->
+        <div>
+          <div class="pb-spec-title">Why This <em>Power Bank?</em></div>
+          <div class="pb-features">
+            <div class="pb-feature-card">
+              <div class="pb-feature-icon">⚡</div>
+              <div>
+                <div class="pb-feature-name">100W Super Fast Charge</div>
+                <div class="pb-feature-desc">Charges your phone from 0 to 80% in under 40 minutes. Works with Samsung SuperCharge, Huawei SuperCharge, and more.</div>
+              </div>
+            </div>
+            <div class="pb-feature-card">
+              <div class="pb-feature-icon">🔌</div>
+              <div>
+                <div class="pb-feature-name">Dual Built-In Cables</div>
+                <div class="pb-feature-desc">USB-C and Lightning cables built right in. No more forgetting your cable at home. Charge two devices simultaneously.</div>
+              </div>
+            </div>
+            <div class="pb-feature-card">
+              <div class="pb-feature-icon">📊</div>
+              <div>
+                <div class="pb-feature-name">LED Digital Display</div>
+                <div class="pb-feature-desc">Precise battery percentage shown on the mirror LED display. No guessing — know exactly how much power you have left.</div>
+              </div>
+            </div>
+            <div class="pb-feature-card">
+              <div class="pb-feature-icon">🎒</div>
+              <div>
+                <div class="pb-feature-name">Compact Pocket Size</div>
+                <div class="pb-feature-desc">20,000mAh in a surprisingly slim body. Fits comfortably in your trouser pocket or small bag. Perfect for Nairobi commutes.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ── WHAT'S IN THE BOX ──────────────────────────────── -->
+    <div class="pb-inbox-section">
+      <div class="pb-inbox-inner">
+        <div class="section-label">— Package Contents</div>
+        <div class="pb-spec-title" style="margin-top:0.5rem;">What's <em>In the Box</em></div>
+        <div class="pb-inbox-grid">
+          <div class="pb-inbox-item">
+            <div class="pb-inbox-emoji">🔋</div>
+            <div class="pb-inbox-name">Sendem PH58 Power Bank × 1</div>
+          </div>
+          <div class="pb-inbox-item">
+            <div class="pb-inbox-emoji">🔌</div>
+            <div class="pb-inbox-name">Built-in USB-C Cable</div>
+          </div>
+          <div class="pb-inbox-item">
+            <div class="pb-inbox-emoji">🍎</div>
+            <div class="pb-inbox-name">Built-in Lightning Cable</div>
+          </div>
+          <div class="pb-inbox-item">
+            <div class="pb-inbox-emoji">📄</div>
+            <div class="pb-inbox-name">User Manual</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ── ORDER FORM ─────────────────────────────────────── -->
+    <div class="pb-order-section" id="orderSection">
+      <div class="pb-order-inner">
+
+        <div class="section-label">— Place Your Order</div>
+        <div class="pb-spec-title" style="margin-top:0.5rem;margin-bottom:0.25rem;">Order <em>Now</em></div>
+        <p id="pbIntroText" style="font-size:0.88rem;color:var(--text-dim);margin-bottom:2rem;">Fill in your details below and we will call you to confirm delivery. Pay cash on arrival.</p>
+
+        <!-- Order summary pill -->
+        <div id="pbOrderSummary" style="background:var(--dark3);border:1px solid var(--border-gold);border-radius:var(--r);padding:1rem 1.5rem;display:flex;justify-content:space-between;align-items:center;margin-bottom:2rem;flex-wrap:wrap;gap:0.75rem;">
+          <div style="display:flex;align-items:center;gap:0.75rem;">
+            <span style="font-size:2rem">🔋</span>
+            <div>
+              <div style="font-size:0.9rem;font-weight:600;color:var(--white)">Sendem PH58 20,000mAh Power Bank</div>
+              <div style="font-size:0.75rem;color:var(--text-dim);margin-top:0.2rem;">Free delivery · Pay on delivery</div>
+            </div>
+          </div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:1.8rem;color:var(--gold);font-weight:600;" id="orderTotal">KES 3,999</div>
+        </div>
+
+        <!-- Form -->
+        <div class="pb-order-grid" id="pbFormGrid">
+          <div class="form-group">
+            <label class="form-label">Full Name *</label>
+            <input class="form-input" id="pbName" type="text" placeholder="John Kamau">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Phone Number *</label>
+            <input class="form-input" id="pbPhone" type="tel" placeholder="0712 345 678">
+          </div>
+          <div class="form-group full">
+            <label class="form-label">Delivery Location *</label>
+            <input class="form-input" id="pbLocation" type="text" placeholder="e.g. Westlands, Nairobi — or your town/estate">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Quantity</label>
+            <div class="pb-qty-controls" style="width:fit-content;">
+              <button class="pb-qty-btn" onclick="changeQty(-1)">−</button>
+              <input class="pb-qty-num" id="pbQty2" value="1" min="1" max="20" type="number" readonly>
+              <button class="pb-qty-btn" onclick="changeQty(1)">+</button>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Colour / Preference</label>
+            <input class="form-input" id="pbColour" type="text" placeholder="e.g. Cream, any colour OK">
+          </div>
+          <div class="form-group full">
+            <label class="form-label">Notes for Us <span style="color:var(--text-muted);font-weight:400;font-size:0.7rem;">(optional)</span></label>
+            <textarea class="form-input" id="pbNotes" placeholder="e.g. Call before delivery, gift wrapping needed, specific time..." rows="3" style="resize:vertical;min-height:80px;"></textarea>
+          </div>
+        </div>
+
+        <!-- Payment info -->
+        <div id="pbPaymentInfo" style="background:var(--dark3);border:1px solid var(--border);border-radius:var(--r);padding:1rem 1.2rem;display:flex;align-items:center;gap:0.75rem;margin:1.2rem 0;">
+          <span style="font-size:1.5rem">💰</span>
+          <div>
+            <div style="font-size:0.88rem;font-weight:600;color:var(--white)">Pay on Delivery</div>
+            <div style="font-size:0.78rem;color:var(--text-dim);margin-top:0.1rem;">We will call to confirm before dispatching. Pay cash when your order arrives.</div>
+          </div>
+          <div style="margin-left:auto;font-family:'Space Mono',monospace;font-size:0.62rem;color:var(--gold);background:rgba(212,168,83,0.1);border:1px solid var(--border-gold);padding:0.3rem 0.6rem;border-radius:4px;white-space:nowrap;">M-Pesa Coming Soon</div>
+        </div>
+
+        <!-- Submit button -->
+        <button class="pb-btn-order" id="pbSubmitBtn" onclick="submitPBOrder()" style="margin-top:0.5rem;">
+          🚚 Place Order — Pay on Delivery
+        </button>
+        <p id="pbSecureNote" style="text-align:center;font-size:0.72rem;color:var(--text-muted);margin-top:0.75rem;">
+          🔒 Your details are safe · 7-Day Returns Guaranteed
+        </p>
+
+        <!-- Success message (hidden until order placed) -->
+        <div id="pbSuccess" style="display:none;text-align:center;padding:3rem 1rem;">
+          <div style="font-size:4rem;margin-bottom:1rem;">🎉</div>
+          <div style="font-family:'Cormorant Garamond',serif;font-size:2rem;color:var(--white);margin-bottom:0.75rem;">Order Placed!</div>
+          <p id="pbSuccessMsg" style="font-size:0.9rem;color:var(--text-dim);line-height:1.6;max-width:360px;margin:0 auto 1.5rem;"></p>
+          <a href="index.html" style="display:inline-flex;align-items:center;gap:0.5rem;color:var(--gold);font-size:0.85rem;text-decoration:none;">← Back to Shop</a>
+        </div>
+
+      </div>
+    </div>
+
+
+    <!-- ── SUPPORT BAR ────────────────────────────────────── -->
+    <div class="support-bar">
+      <div class="support-inner">
+        <div class="support-left">
+          <span class="support-icon">🎧</span>
+          <div>
+            <div class="support-title">Questions? Talk to Us</div>
+            <div class="support-sub">Mon–Sat · 8am–8pm · Fast response guaranteed</div>
+          </div>
+        </div>
+        <div class="support-actions">
+          <a href="tel:+254140700113" class="support-btn support-btn-call">📞 Call +254 140 700 113</a>
+          <a href="https://wa.me/254140700113?text=Hi!%20I%20have%20a%20question%20about%20the%20Sendem%20Power%20Bank." target="_blank" class="support-btn support-btn-whatsapp">💬 WhatsApp Us</a>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- ── FOOTER ─────────────────────────────────────────── -->
+    <footer>
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-logo">Kenya<span>Tech</span></a>
+          <p class="footer-brand-desc">Nairobi's premier destination for original phone accessories and electronics. Delivering quality to all 47 counties.</p>
+        </div>
+        <div>
+          <div class="footer-col-title">Shop</div>
+          <ul class="footer-links">
+            <li><a href="index.html#products">All Products</a></li>
+            <li><a href="index.html#categories">Phone Accessories</a></li>
+            <li><a href="index.html#categories">Electronics</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">Support</div>
+          <ul class="footer-links">
+            <li><a href="#">Delivery Info</a></li>
+            <li><a href="#">Returns Policy</a></li>
+            <li><a href="#">Track Your Order</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-col-title">Contact</div>
+          <ul class="footer-links">
+            <li><a href="tel:+254140700113">+254 140 700 113</a></li>
+            <li><a href="https://wa.me/254140700113" target="_blank">WhatsApp Us</a></li>
+            <li><a href="/cdn-cgi/l/email-protection#4f272a2323200f242a21362e3b2a2c27612c2061242a"><span class="__cf_email__" data-cfemail="9df5f8f1f1f2ddf6f8f3e4fce9f8fef5b3fef2b3f6f8">[email&#160;protected]</span></a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <div class="footer-copy">© 2025 KenyaTech.co.ke — All rights reserved</div>
+        <div class="mpesa-badge" style="opacity:0.6;">📲 M-Pesa Payments — Coming Soon</div>
+      </div>
+    </footer>
+
+  </div><!-- end pb-page -->
+
+
+    <script>
+    var SHEET_URL = "https://script.google.com/macros/s/AKfycbwO23zcasbNW2oVu-z4vQ9j7bjh5qjsZKKZ7DcXtI-diPrQbjQb2gxsBEHcnqpsHuIA/exec";
+    var qty = 1;
+    var BASE_PRICE = 3999;
+
+    // ── Quantity ──────────────────────────────────────────────
+    function changeQty(delta) {
+      qty = Math.max(1, Math.min(20, qty + delta));
+      var q1 = document.getElementById("pbQty");
+      var q2 = document.getElementById("pbQty2");
+      if (q1) q1.value = qty;
+      if (q2) q2.value = qty;
+      var tot = document.getElementById("orderTotal");
+      if (tot) tot.textContent = "KES " + (BASE_PRICE * qty).toLocaleString();
+    }
+
+    // ── Scroll to order form ──────────────────────────────────
+    function scrollToOrder() {
+      document.getElementById("orderSection").scrollIntoView({ behavior: "smooth" });
+    }
+
+    // ── Thumbnail switcher ────────────────────────────────────
+    function switchImg(src, thumbEl) {
+      var hero = document.getElementById("heroImg");
+      if (hero) hero.src = src;
+      document.querySelectorAll(".pb-thumb").forEach(function(t) { t.classList.remove("active"); });
+      if (thumbEl) thumbEl.classList.add("active");
+    }
+
+    // ── Place order ───────────────────────────────────────────
+    function submitPBOrder() {
+      var name     = (document.getElementById("pbName")     || {}).value || "";
+      var phone    = (document.getElementById("pbPhone")    || {}).value || "";
+      var location = (document.getElementById("pbLocation") || {}).value || "";
+      var colour   = (document.getElementById("pbColour")   || {}).value || "";
+      var notes    = (document.getElementById("pbNotes")    || {}).value || "";
+
+      name = name.trim(); phone = phone.trim(); location = location.trim();
+
+      if (!name || !phone || !location) {
+        showToast("Please fill in Name, Phone, and Location");
+        return;
+      }
+      if (!/^0[17]\d{8}$/.test(phone.replace(/\s/g, ""))) {
+        showToast("Please enter a valid Kenyan phone number (07xx or 01xx)");
+        return;
+      }
+
+      var total = BASE_PRICE * qty;
+
+      fetch(SHEET_URL, {
+          method: "POST",
+          mode: "no-cors",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            Name: name, Phone: phone, Location: location,
+            Items: "Sendem PH58 Power Bank x" + qty,
+            Subtotal: "KES " + total.toLocaleString(),
+            Shipping: "FREE",
+            Total: "KES " + total.toLocaleString(),
+            Notes: (colour ? "Colour: " + colour + ". " : "") + (notes || "None"),
+            Date: new Date().toLocaleString("en-KE", { timeZone: "Africa/Nairobi" })
+          })
+        }).catch(function(e) { console.error("Sheet.best error:", e); });
+
+      ["pbIntroText","pbOrderSummary","pbFormGrid","pbPaymentInfo","pbSubmitBtn","pbSecureNote"].forEach(function(id) {
+        var el = document.getElementById(id);
+        if (el) el.style.display = "none";
+      });
+
+      document.getElementById("pbSuccessMsg").textContent =
+        "Thank you " + name + "! We will call " + phone + " to confirm delivery to " + location + ". Payment on arrival.";
+      document.getElementById("pbSuccess").style.display = "block";
+    }
+
+    // ── Toast ─────────────────────────────────────────────────
+    var toastTimeout;
+    function showToast(msg) {
+      var t = document.getElementById("toast");
+      document.getElementById("toastText").textContent = msg;
+      t.classList.add("show");
+      clearTimeout(toastTimeout);
+      toastTimeout = setTimeout(function() { t.classList.remove("show"); }, 2800);
+    }
+
+    // ── Nav scroll shrink ─────────────────────────────────────
+    window.addEventListener("scroll", function() {
+      document.getElementById("navbar").classList.toggle("scrolled", window.scrollY > 80);
+    });
+
+    // ── Cursor — simple left/top positioning, always visible ──
+    var cursor = document.getElementById("cursor");
+    var ring   = document.getElementById("cursorRing");
+    if (cursor && ring) {
+      var mx = 0, my = 0, rx = 0, ry = 0;
+
+      document.addEventListener("mousemove", function(e) {
+        mx = e.clientX; my = e.clientY;
+        cursor.style.left = (mx - 7) + "px";
+        cursor.style.top  = (my - 7) + "px";
+      });
+
+      (function animateRing() {
+        rx += (mx - rx) * 0.12;
+        ry += (my - ry) * 0.12;
+        ring.style.left = (rx - 20) + "px";
+        ring.style.top  = (ry - 20) + "px";
+        requestAnimationFrame(animateRing);
+      })();
+
+      setTimeout(function() {
+        document.querySelectorAll("a,button,.pb-thumb").forEach(function(el) {
+          el.addEventListener("mouseenter", function() { cursor.classList.add("hovering"); ring.classList.add("hovering"); });
+          el.addEventListener("mouseleave", function() { cursor.classList.remove("hovering"); ring.classList.remove("hovering"); });
+        });
+      }, 300);
+    }
+  </script>
+</body>
+</html>
