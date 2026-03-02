@@ -716,7 +716,7 @@ function placeOrder() {
     showToast("Please fill in all required fields");
     return;
   }
-  if (!/^0[17]\d{8}$/.test(phone.replace(/\s/g, ""))) {
+  if (phone.replace(/[\s+\-]/g, "").length < 9)  {
     showToast("Please enter a valid Kenyan phone number (07xx or 01xx)");
     return;
   }
