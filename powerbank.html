@@ -878,49 +878,47 @@
     }
 
     // ── Place order ───────────────────────────────────────────
-    function submitPBOrder() {
-      var name     = (document.getElementById("pbName")     || {}).value || "";
-      var phone    = (document.getElementById("pbPhone")    || {}).value || "";
-      var location = (document.getElementById("pbLocation") || {}).value || "";
-      var colour   = (document.getElementById("pbColour")   || {}).value || "";
-      var notes    = (document.getElementById("pbNotes")    || {}).value || "";
+   function submitPBOrder() {
+  var name     = document.getElementById("pbName").value.trim();
+  var phone    = document.getElementById("pbPhone").value.trim();
+  var location = document.getElementById("pbLocation").value.trim();
+  var colour   = document.getElementById("pbColour") ? document.getElementById("pbColour").value.trim() : "";
+  var notes    = document.getElementById("pbNotes") ? document.getElementById("pbNotes").value.trim() : "";
 
-      name = name.trim(); phone = phone.trim(); location = location.trim();
+  if (!name || !phone || !location) {
+    alert("Please fill in Name, Phone, and Location");
+    return;
+  }
 
-      if (!name || !phone || !location) {
-        showToast("Please fill in Name, Phone, and Location");
-        return;
-      }
-      if (phone.replace(/[\s+\-]/g, "").length < 9)  {
-        showToast("Please enter a valid Kenyan phone number (07xx or 01xx)");
-        return;
-      }
+  var total = BASE_PRICE * qty;
 
-      var total = BASE_PRICE * qty;
+  fetch("https://api.sheetbest.com/sheets/c7c9236a-8519-4a4c-8487-2aa23a68d4de", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      Name: name,
+      Phone: phone,
+      Location: location,
+      Items: "Sendem PH58 Power Bank x" + qty,
+      Subtotal: "KES " + total.toLocaleString(),
+      Shipping: "FREE",
+      Total: "KES " + total.toLocaleString(),
+      Notes: (colour ? "Colour: " + colour + ". " : "") + (notes || "None"),
+      Date: new Date().toLocaleString("en-KE", { timeZone: "Africa/Nairobi" })
+    })
+  })
+  .then(function(r) { console.log("Sheet response:", r.status); })
+  .catch(function(e) { console.error("Sheet error:", e); });
 
-      fetch(SHEET_URL, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            Name: name, Phone: phone, Location: location,
-            Items: "Sendem PH58 Power Bank x" + qty,
-            Subtotal: "KES " + total.toLocaleString(),
-            Shipping: "FREE",
-            Total: "KES " + total.toLocaleString(),
-            Notes: (colour ? "Colour: " + colour + ". " : "") + (notes || "None"),
-            Date: new Date().toLocaleString("en-KE", { timeZone: "Africa/Nairobi" })
-          })
-        }).catch(function(e) { console.error("Sheet.best error:", e); });
+  ["pbIntroText","pbOrderSummary","pbFormGrid","pbPaymentInfo","pbSubmitBtn","pbSecureNote"].forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) el.style.display = "none";
+  });
 
-      ["pbIntroText","pbOrderSummary","pbFormGrid","pbPaymentInfo","pbSubmitBtn","pbSecureNote"].forEach(function(id) {
-        var el = document.getElementById(id);
-        if (el) el.style.display = "none";
-      });
-
-      document.getElementById("pbSuccessMsg").textContent =
-        "Thank you " + name + "! We will call " + phone + " to confirm delivery to " + location + ". Payment on arrival.";
-      document.getElementById("pbSuccess").style.display = "block";
-    }
+  document.getElementById("pbSuccessMsg").textContent =
+    "Thank you " + name + "! We will call " + phone + " to confirm delivery to " + location + ". Payment on arrival.";
+  document.getElementById("pbSuccess").style.display = "block";
+}
 
     // ── Toast ─────────────────────────────────────────────────
     var toastTimeout;
