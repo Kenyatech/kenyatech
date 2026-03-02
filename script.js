@@ -290,10 +290,10 @@ const products = [
 /* =================================================================
    2. STATE VARIABLES
 ================================================================= */
-var cart                  = [];
-var wishlist              = new Set();
-var activeFilter          = "all";
-var selectedPayment       = "cod";
+var cart = [];
+var wishlist = new Set();
+var activeFilter = "all";
+var selectedPayment = "cod";
 var currentModalProductId = null;
 
 
@@ -306,33 +306,7 @@ var currentModalProductId = null;
 
    size: "card" | "modal" | "feature" | "list"
 ================================================================= */
-function productImg(p, size) {
-  var S = {
-    card:    "width:100%;height:100%;object-fit:cover;",
-    modal:   "width:80%;height:80%;object-fit:contain;",
-    feature: "width:55%;height:55%;object-fit:contain;margin-bottom:1.5rem;display:block;",
-    list:    "width:40px;height:40px;object-fit:contain;border-radius:4px;"
-  };
-  var style = S[size] || S.card;
-  var eSz   = (size === "modal") ? "7rem" : "5rem";
-
-  if (!p.image) {
-    if (size === "list")    return "<span style='font-size:2rem'>" + p.emoji + "</span>";
-    if (size === "feature") return "<span class='bs-feature-emoji'>" + p.emoji + "</span>";
-    return "<span style='font-size:" + eSz + "'>" + p.emoji + "</span>";
-  }
-
-  var eCls = (size === "feature") ? " class='bs-feature-emoji'" : "";
-
-  if (size === "list") {
-    return "<img src='" + p.image + "' alt='" + p.name + "' style='" + style + "' onerror='this.style.display=\"none\"'>";
-  }
-
-  return "<img src='" + p.image + "' alt='" + p.name + "' style='" + style + "' "
-    + "onerror='this.style.display=\"none\";this.nextElementSibling.style.display=\"inline-block\"'>"
-    + "<span" + eCls + " style='font-size:" + eSz + ";display:none'>" + p.emoji + "</span>";
-}
-
+function $(id) { return document.getElementById(id); }
 
 /* =================================================================
    4. RENDER PRODUCTS
@@ -739,33 +713,61 @@ function placeOrder() {
   // ────────────────────────────────────────────────────────
 
   // ===== SAVE ORDER TO GOOGLE SHEET (sheet.best) =====
-var SHEET_URL = "https://api.sheetbest.com/sheets/c7c9236a-8519-4a4c-8487-2aa23a68d4de";
+function placeOrder() {
+  var nameEl     = $("custName");
+  var phoneEl    = $("custPhone");
+  var locationEl = $("custLocation");
+  var notesEl    = $("custNotes");
 
-var payload = {
-  Name: name,
-  Phone: phone,
-  Location: location,
-  Items: itemsStr,
-  Total: "KES " + total.toLocaleString()
-};
+  var name     = nameEl ? nameEl.value.trim() : "";
+  var phone    = phoneEl ? phoneEl.value.trim() : "";
+  var location = locationEl ? locationEl.value.trim() : "";
+  var notes    = notesEl ? notesEl.value.trim() : "";
 
-fetch(SHEET_URL, {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify(payload)
-})
-.then(function(res) {
-  if (!res.ok) throw new Error("Sheet save failed");
-  return res.json();
-})
-.then(function(data) {
-  console.log("Order saved to sheet:", data);
-})
-.catch(function(err) {
-  console.error("Sheet.best error:", err);
-  alert("⚠️ Order received but failed to save. Please contact us on WhatsApp to confirm.");
-});
+  if (!name || !phone || !location) {
+    showToast("Please fill in all required fields");
+    return;
+  }
+  if (!/^0[17]\d{8}$/.test(phone.replace(/\s/g, ""))) {
+    showToast("Please enter a valid Kenyan phone number (07xx or 01xx)");
+    return;
+  }
 
+  var subtotal = cart.reduce(function(s, c) { return s + c.price * c.qty; }, 0);
+  var shipping = (subtotal >= 10000) ? 0 : 300;
+  var total    = subtotal + shipping;
+  var itemsStr = cart.map(function(c) { return c.name + " x" + c.qty; }).join(", ");
+
+  var SHEET_URL = "https://api.sheetbest.com/sheets/c7c9236a-8519-4a4c-8487-2aa23a68d4de";
+
+  var payload = {
+    Name: name,
+    Phone: phone,
+    Location: location,
+    Items: itemsStr,
+    Total: "KES " + total.toLocaleString()
+  };
+
+  try {
+    fetch(SHEET_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload)
+    })
+    .then(function(res) { return res.json(); })
+    .then(function() { console.log("Order saved to sheet"); })
+    .catch(function(err) { console.error("Sheet.best error:", err); });
+  } catch (e) {
+    console.error("Fetch crash:", e);
+  }
+
+  if ($("successMsg")) $("successMsg").textContent = "Order confirmed! We will call you at " + phone + " to arrange delivery to " + location + ".";
+  if ($("checkoutContent")) $("checkoutContent").style.display = "none";
+  if ($("orderSuccess")) $("orderSuccess").classList.add("show");
+
+  cart = [];
+  updateCartCount();
+}
 /* =================================================================
    13. TOAST
 ================================================================= */
@@ -785,10 +787,11 @@ function showToast(msg) {
    Gold dot tracks mouse exactly. Outer ring follows with smooth lag.
    Guarded by null check so removing the HTML divs won't crash the page.
 ================================================================= */
-var cursor = document.getElementById("cursor");
-var ring   = document.getElementById("cursorRing");
+var cursor = $("cursor");
+var ring   = $("cursorRing");
+if (cursor && ring)
 
-if (cursor && ring) {
+ {
   var mx = 0, my = 0, rx = 0, ry = 0;
 
   // Position dot exactly on mouse — centred using half of 14px dot = 7px
@@ -824,44 +827,47 @@ if (cursor && ring) {
    15. SCROLL EFFECTS
 ================================================================= */
 window.addEventListener("scroll", function() {
-  document.getElementById("navbar").classList.toggle("scrolled", window.scrollY > 80);
+  var nav = $("navbar");
+  if (nav) nav.classList.toggle("scrolled", window.scrollY > 80);
 });
-
-function observeReveal() {
-  var obs = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry, i) {
-      if (entry.isIntersecting) {
-        setTimeout(function() { entry.target.classList.add("visible"); }, i * 80);
-      }
-    });
-  }, { threshold: 0.1 });
-
-  document.querySelectorAll(".reveal:not(.visible)").forEach(function(el) { obs.observe(el); });
-}
 
 
 /* =================================================================
    16. MOBILE MENU
 ================================================================= */
-document.getElementById("menuBtn").addEventListener("click", function() {
-  document.getElementById("mobileMenu").classList.toggle("open");
-});
-
-function closeMobileMenu() {
-  document.getElementById("mobileMenu").classList.remove("open");
+var menuBtn = $("menuBtn");
+if (menuBtn) {
+  menuBtn.addEventListener("click", function() {
+    var m = $("mobileMenu");
+    if (m) m.classList.toggle("open");
+  });
 }
-
+function closeMobileMenu() {
+  var m = $("mobileMenu");
+  if (m) m.classList.remove("open");
+}
 
 /* =================================================================
    OVERLAY — close on backdrop click
 ================================================================= */
-document.getElementById("modalOverlay").addEventListener("click", function(e) {
-  if (e.target === e.currentTarget) closeModal();
-});
-document.getElementById("checkoutOverlay").addEventListener("click", function(e) {
-  if (e.target === e.currentTarget) closeCheckout();
-});
+var modalOverlay = $("modalOverlay");
+if (modalOverlay) {
+  modalOverlay.addEventListener("click", function(e) {
+    if (e.target === e.currentTarget) closeModal();
+  });
+}
+var checkoutOverlay = $("checkoutOverlay");
+if (checkoutOverlay) {
+  checkoutOverlay.addEventListener("click", function(e) {
+    if (e.target === e.currentTarget) closeCheckout();
+  });
+}
 
+/* ===================== INIT (PATCHED NULL-SAFE) ======================= */
+if ($("productsGrid")) renderProducts();
+if ($("bsFeature")) renderBestsellers();
+if (typeof observeReveal === "function") observeReveal();
+if (typeof checkURLProduct === "function") checkURLProduct();
 
 /* =================================================================
    17. INIT
