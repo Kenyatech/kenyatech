@@ -739,7 +739,7 @@ function placeOrder() {
   // Google Sheet automatically every time someone places an order.
   // ────────────────────────────────────────────────────────
 
-  if (SHEET_URL !== "YOUR_SHEET_BEST_API_URL_HERE") {
+  if (SHEET_URL !== "https://api.sheetbest.com/sheets/c7c9236a-8519-4a4c-8487-2aa23a68d4de") {
     fetch(SHEET_URL, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
