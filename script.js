@@ -733,7 +733,7 @@ function placeOrder() {
   // STEP 3: Make sure your Google Sheet has these column headers in Row 1:
   //         Name | Phone | Location | Items | Subtotal | Shipping | Total | Notes | Date
   //
-  var SHEET_URL = "YOUR_SHEET_BEST_API_URL_HERE";
+  var SHEET_URL = "https://api.sheetbest.com/sheets/c7c9236a-8519-4a4c-8487-2aa23a68d4de";
   //
   // Once you paste your URL above, orders will appear in your
   // Google Sheet automatically every time someone places an order.
