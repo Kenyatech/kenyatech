@@ -732,44 +732,39 @@ function placeOrder() {
   // STEP 2: Replace the URL below with your Sheet.best API URL
   // STEP 3: Make sure your Google Sheet has these column headers in Row 1:
   //         Name | Phone | Location | Items | Subtotal | Shipping | Total | Notes | Date
-  //
-  var SHEET_URL = "https://api.sheetbest.com/sheets/c7c9236a-8519-4a4c-8487-2aa23a68d4de";
+
   //
   // Once you paste your URL above, orders will appear in your
   // Google Sheet automatically every time someone places an order.
   // ────────────────────────────────────────────────────────
 
-  if (SHEET_URL !== "https://api.sheetbest.com/sheets/c7c9236a-8519-4a4c-8487-2aa23a68d4de") {
-    fetch(SHEET_URL, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        Name:     name,
-        Phone:    phone,
-        Location: location,
-        Items:    itemsStr,
-        Subtotal: "KES " + subtotal.toLocaleString(),
-        Shipping: shipping === 0 ? "FREE" : "KES " + shipping,
-        Total:    "KES " + total.toLocaleString(),
-        Notes:    notes || "None",
-        Date:     new Date().toLocaleString("en-KE", { timeZone: "Africa/Nairobi" })
-      })
-    }).catch(function(err) {
-      console.error("Sheet.best error:", err);
-      // Order still completes even if sheet save fails
-    });
-  }
+  // ===== SAVE ORDER TO GOOGLE SHEET (sheet.best) =====
+var SHEET_URL = "https://api.sheetbest.com/sheets/c7c9236a-8519-4a4c-8487-2aa23a68d4de";
 
-  var msg = "Order confirmed! We will call you at " + phone + " to arrange delivery to " + location + ". Payment on delivery.";
+var payload = {
+  Name: name,
+  Phone: phone,
+  Location: location,
+  Items: itemsStr,
+  Total: "KES " + total.toLocaleString()
+};
 
-  document.getElementById("successMsg").textContent        = msg;
-  document.getElementById("checkoutContent").style.display = "none";
-  document.getElementById("orderSuccess").classList.add("show");
-
-  cart = [];
-  updateCartCount();
-}
-
+fetch(SHEET_URL, {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify(payload)
+})
+.then(function(res) {
+  if (!res.ok) throw new Error("Sheet save failed");
+  return res.json();
+})
+.then(function(data) {
+  console.log("Order saved to sheet:", data);
+})
+.catch(function(err) {
+  console.error("Sheet.best error:", err);
+  alert("⚠️ Order received but failed to save. Please contact us on WhatsApp to confirm.");
+});
 
 /* =================================================================
    13. TOAST
