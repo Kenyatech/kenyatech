@@ -58,7 +58,7 @@ const products = [
     original: 3000,
     badge: "hot",
     soldOut: false,
-    desc: "ANC + ENC noise cancellation, Super Bass, TWS Bluetooth 5.3. Pro Series with 365-day warranty. Crystal clear calls, deep punchy sound.",
+    desc: "ANC + ENC noise cancellation, Super Bass, TWS Bluetooth 5.3. Pro Series. Crystal clear calls, deep punchy sound.",
     rating: 4.8
   },
   {
