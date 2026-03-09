@@ -53,7 +53,7 @@ const products = [
     name: "Aldeepo PRO-TW27 Earbuds",
     category: "accessories",
     emoji: "🎧",
-    image: "images/2.PNG",
+    image: "images/2.png",
     price: 2699,
     original: 3000,
     badge: "hot",
