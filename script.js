@@ -76,11 +76,11 @@ const products = [
   },
   {
     id: 4,
-    name: "20,000mAh Power Bank",
+    name: "SENDEM 20,000mAh Power Bank",
     category: "accessories",
     emoji: "🔋",
     image: "images/4_jpg.jpg",
-    price: 3999,
+    price: 3850,
     original: 6000,
     badge: "sale",
     soldOut: false,
